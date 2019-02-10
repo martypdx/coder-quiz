@@ -1,6 +1,8 @@
 import scoreVerbosity from '../src/result/calculate/score-verbosity.js';
 const test = QUnit.test;
 
+QUnit.module('score verbosity');
+
 let scorecard = null;
 QUnit.testStart(function() {
     scorecard = { js: 0, python: 0, java: 0, csharp: 0 };
