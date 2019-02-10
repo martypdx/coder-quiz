@@ -1,3 +1,4 @@
+import scoreCurlies from '../src/result/calculate/score-curlies.js';
 const test = QUnit.test;
 
 QUnit.module('score curlies');
@@ -6,22 +7,6 @@ let scorecard = null;
 QUnit.testStart(function() {
     scorecard = { js: 0, python: 0, java: 0, csharp: 0 };
 });
-
-function scoreCurlies(answer, scorecard) {
-    if(answer === 'love') {
-        scorecard.js += 1;
-        scorecard.java += 0.5;
-        scorecard.csharp += 0.5;
-    }
-    if(answer === 'okay') {
-        scorecard.js += 0.5;
-        scorecard.java += 1;
-        scorecard.csharp += 1;
-    }
-    if(answer === 'indent') {
-        scorecard.python += 1;
-    }
-}
 
 test('curlies love', function(assert) {
     scoreCurlies('love', scorecard);
