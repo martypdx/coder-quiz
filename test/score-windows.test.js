@@ -10,6 +10,11 @@ function scoreWindows(answer, scorecard) {
         scorecard.python += 1;
         scorecard.java += 0.5;
     }
+    if(answer === 'never') {
+        scorecard.js += 0.5;
+        scorecard.python += 0.5;
+        scorecard.java += 1;
+    }
 }
 
 QUnit.module('score windows');
@@ -27,4 +32,9 @@ test('windows', function(assert) {
 test('indifferent', function(assert) {
     scoreWindows('indifferent', scorecard);
     assert.deepEqual(scorecard, { js: 1, python: 1, java: 0.5, csharp: 0 });
+});
+
+test('never', function(assert) {
+    scoreWindows('never', scorecard);
+    assert.deepEqual(scorecard, { js: 0.5, python: 0.5, java: 1, csharp: 0 });
 });
