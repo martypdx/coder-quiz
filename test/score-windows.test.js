@@ -1,7 +1,15 @@
 const test = QUnit.test;
 
 function scoreWindows(answer, scorecard) {
-
+    if(answer === 'windows') {
+        scorecard.python += 0.5;
+        scorecard.csharp += 1;
+    }
+    if(answer === 'indifferent') {
+        scorecard.js += 1;
+        scorecard.python += 1;
+        scorecard.java += 0.5;
+    }
 }
 
 QUnit.module('score windows');
@@ -14,4 +22,9 @@ QUnit.testStart(function() {
 test('windows', function(assert) {
     scoreWindows('windows', scorecard);
     assert.deepEqual(scorecard, { js: 0, python: 0.5, java: 0, csharp: 1 });
+});
+
+test('indifferent', function(assert) {
+    scoreWindows('indifferent', scorecard);
+    assert.deepEqual(scorecard, { js: 1, python: 1, java: 0.5, csharp: 0 });
 });
