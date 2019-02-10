@@ -1,4 +1,4 @@
-import scoreVerbosity from '../src/result/calculate-results/score-verbosity.js';
+import scoreVerbosity from '../src/result/calculate/score-verbosity.js';
 const test = QUnit.test;
 
 let scorecard = null;
