@@ -1,17 +1,5 @@
-// import scoreCurlies from '../src/result/calculate/score-curlies.js';
+import scoreTypes from '../src/result/calculate/score-types.js';
 const test = QUnit.test;
-
-function scoreTypes(answer, scorecard) {
-    if(answer === 'none') {
-        scorecard.js += 1;
-        scorecard.python += 0.5;
-    }
-    if(answer === 'maths') {
-        scorecard.python += 1;
-        scorecard.java += 0.5;
-        scorecard.csharp += 0.5;
-    }
-}
 
 QUnit.module('score types');
 
