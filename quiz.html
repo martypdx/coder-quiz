@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coder Quiz</title>
+    <link rel="stylesheet" href="src/main.css">
+    <link rel="stylesheet" href="src/quiz.css">
+</head>
+<body>
+    <header>
+        <img src="assets/alchemy-logo.png" alt="Alchemy Code Lab Logo">
+        <h1>Take the Quiz</h1>
+        <div class="profile">
+            <img id="avatar">
+            <span id="name"></span>
+        </div>
+    </header>
+    
+    <main> 
+        <h2>
+            Find out your destiny language:
+        </h2>
+        <form id="code-quiz">
+            <fieldset>
+                <legend>How verbose do you like your code?</legend>
+                <p>
+                    <label>
+                        <input name="verbosity" value="brevity" type="radio" required>
+                        Brevity is the soul of wit
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="verbosity" value="dynamic" type="radio" required>
+                        As long as it's dynamic
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="verbosity" value="verbose" type="radio" required>
+                        Spell it all out, no such thing as too verbose
+                    </label>
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    How do you feel about curly braces
+                    <code>{}</code> ?
+                </legend>
+                <p>
+                    <label>
+                        <input name="curlies" value="love" type="radio" required>
+                        Love 'em!
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="curlies" value="okay" type="radio" required>
+                        A smattering is okay
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="curlies" value="indent" type="radio" required>
+                        Eww! Can't we just indent?
+                    </label>
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    What about data types?
+                </legend>
+                <p>
+                    <label>
+                        <input name="types" value="none" type="radio" required>
+                        Data what?
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="types" value="maths" type="radio" required>
+                        As long as there are lots of maths
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="types" value="always" type="radio" required>
+                        Every data type in my code must be clearly labelled
+                    </label>
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    How do you feel about Microsoft Windows?
+                </legend>
+                <p>
+                    <label>
+                        <input name="windows" value="windows" type="radio" required>
+                        The only Operating System for real businesses
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="windows" value="indifferent" type="radio" required>
+                        It's one of three
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="windows" value="never" type="radio" required>
+                        Over my dead body
+                    </label>
+                </p>
+            </fieldset>
+            <button>Submit Answers</button>
+        </form>
+    </main>
+
+    <footer>
+        <cite>
+            Icons designed by Freepik from Flaticon
+        </cite>
+    </footer>
+
+    <script  type="module" src="src/quiz.js"></script>
+</body>
+</html>
