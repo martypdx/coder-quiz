@@ -1,4 +1,4 @@
-import calculateResult from './calculate-result.js';
+import calculateResult from './calculate/calculate-result.js';
 
 const userJSON = window.localStorage.getItem('user');
 let user = null;
