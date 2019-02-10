@@ -1,4 +1,4 @@
-import calcResult from '../src/calculate-result.js';
+import calcResult from '../src/result/calculate-result.js';
 const test = QUnit.test;
 
 test('JavaScript FTW', function(assert) {
