@@ -1,50 +1,15 @@
-import calcResult from '../src/result/calculate-result.js';
 const test = QUnit.test;
 
-test('JavaScript FTW', function(assert) {
-    const answers = {
-        curlies: 'love',
-        types: 'none',
-        verbosity: 'dynamic',
-        windows: 'indifferent'
-    };
+function scoreVerbosity(answer, scorecard) {
+    if(answer === 'brevity') {
+        scorecard.js += 1;
+        scorecard.python += 0.5;
+    }
+}
 
-    const result = calcResult(answers);
-    assert.equal(result, 'JavaScript');
+test('verbosity brevity', function(assert) {
+    const scorecard = { js: 0, python: 0, java: 0, csharp: 0 };
+    scoreVerbosity('brevity', scorecard);
+    assert.deepEqual(scorecard, { js: 1, python: 0.5, java: 0, csharp: 0 });
 });
 
-test('Python FTW', function(assert) {
-    const answers = {
-        curlies: 'indent',
-        types: 'maths',
-        verbosity: 'dynamic',
-        windows: 'indifferent'
-    };
-
-    const result = calcResult(answers);
-    assert.equal(result, 'Python');
-});
-
-test('C# FTW', function(assert) {
-    const answers = {
-        curlies: 'okay',
-        types: 'always',
-        verbosity: 'verbose',
-        windows: 'windows'
-    };
-
-    const result = calcResult(answers);
-    assert.equal(result, 'C#');
-});
-
-test('Java FTW', function(assert) {
-    const answers = {
-        curlies: 'okay',
-        types: 'always',
-        verbosity: 'verbose',
-        windows: 'never'
-    };
-
-    const result = calcResult(answers);
-    assert.equal(result, 'Java');
-});
