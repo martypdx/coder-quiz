@@ -18,6 +18,9 @@ function scoreCurlies(answer, scorecard) {
         scorecard.java += 1;
         scorecard.csharp += 1;
     }
+    if(answer === 'indent') {
+        scorecard.python += 1;
+    }
 }
 
 test('curlies love', function(assert) {
@@ -30,4 +33,7 @@ test('curlies okay', function(assert) {
     assert.deepEqual(scorecard, { js: 0.5, python: 0, java: 1, csharp: 1 });
 });
 
-
+test('curlies indent', function(assert) {
+    scoreCurlies('indent', scorecard);
+    assert.deepEqual(scorecard, { js: 0, python: 1, java: 0, csharp: 0 });
+});
