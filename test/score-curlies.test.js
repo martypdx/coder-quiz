@@ -13,9 +13,21 @@ function scoreCurlies(answer, scorecard) {
         scorecard.java += 0.5;
         scorecard.csharp += 0.5;
     }
+    if(answer === 'okay') {
+        scorecard.js += 0.5;
+        scorecard.java += 1;
+        scorecard.csharp += 1;
+    }
 }
 
 test('curlies love', function(assert) {
     scoreCurlies('love', scorecard);
     assert.deepEqual(scorecard, { js: 1, python: 0, java: 0.5, csharp: 0.5 });
 });
+
+test('curlies okay', function(assert) {
+    scoreCurlies('okay', scorecard);
+    assert.deepEqual(scorecard, { js: 0.5, python: 0, java: 1, csharp: 1 });
+});
+
+
