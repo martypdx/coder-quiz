@@ -1,4 +1,3 @@
-import scoreVerbosity from '../src/result/calculate/score-verbosity.js';
 const test = QUnit.test;
 
 QUnit.module('score curlies');
@@ -9,9 +8,14 @@ QUnit.testStart(function() {
 });
 
 function scoreCurlies(answer, scorecard) {
-
+    if(answer === 'love') {
+        scorecard.js += 1;
+        scorecard.java += 0.5;
+        scorecard.csharp += 0.5;
+    }
 }
 
 test('curlies love', function(assert) {
-    
+    scoreCurlies('love', scorecard);
+    assert.deepEqual(scorecard, { js: 1, python: 0, java: 0.5, csharp: 0.5 });
 });
