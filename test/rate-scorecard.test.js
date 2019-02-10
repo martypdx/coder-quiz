@@ -8,11 +8,11 @@ function rateScorecard(scorecard) {
     const java = scorecard.java;
     const csharp = scorecard.csharp;
 
-    if(js > python && js > java && js > csharp) {
+    if(js >= python && js >= java && js >= csharp) {
         return 'JavaScript';
     }
 
-    if(python > js && python > java && python > csharp) {
+    if(python > js && python >= java && python >= csharp) {
         return 'Python';
     }
 
@@ -20,7 +20,7 @@ function rateScorecard(scorecard) {
         return 'Java';
     }
 
-    if(csharp > js && csharp > python && csharp > java) {
+    if(csharp > js && csharp > python && csharp >= java) {
         return 'C#';
     }
 }
@@ -51,5 +51,26 @@ test('C#', function(assert) {
         js: 0, python: 0, java: 0, csharp: 1
     });
     assert.equal(result, 'C#');
+});
+
+test('tie JavaScript wins', function(assert) {
+    const result = rateScorecard({ 
+        js: 1, python: 1, java: 1, csharp: 1
+    });
+    assert.equal(result, 'JavaScript');    
+});
+
+test('tie Python beats C# and Java', function(assert) {
+    const result = rateScorecard({ 
+        js: 0, python: 1, java: 1, csharp: 1
+    });
+    assert.equal(result, 'Python');    
+});
+
+test('tie C# beats Java', function(assert) {
+    const result = rateScorecard({ 
+        js: 0, python: 0, java: 1, csharp: 1
+    });
+    assert.equal(result, 'C#');    
 });
 
