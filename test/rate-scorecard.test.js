@@ -1,53 +1,77 @@
-import rateScorecard from '../src/result/calculate/rate-scorecard.js';
 const test = QUnit.test;
 
-QUnit.module('rate scorecard');
+function rateScorecard(scorecard) {
+    const js = scorecard.js;
+    const python = scorecard.python;
+    const java = scorecard.java;
+    const csharp = scorecard.csharp;
 
-test('JavaScript', function(assert) {
-    const result = rateScorecard({ 
-        js: 1, python: 0, java: 0, csharp: 0
-    });
+    if(js > python && js > csharp && js > java) {
+        return 'JavaScript';
+    }
+    if(python > java) {
+        return 'Python';
+    }
+    if(java > csharp) {
+        return 'Java';
+    }
+    return 'C#';
+}
+
+test('js highest on scorecard, return JavaScript', function(assert) {
+    // arrange (given a specific scorecard value)
+    const scorecard = { js: 1, python: 0, java: 0, csharp: 0 };
+
+    // act (call the function using scorecard, capture result)
+    const result = rateScorecard(scorecard);
+
+    // assert (result is "JavaScript")
     assert.equal(result, 'JavaScript');
 });
 
-test('Python', function(assert) {
-    const result = rateScorecard({ 
-        js: 0, python: 1, java: 0, csharp: 0
-    });
+
+test('python highest on scorecard, return Python', function(assert) {
+    // arrange
+    const scorecard = { js: 0, python: 1, java: 0, csharp: 0 };
+    // act
+    const result = rateScorecard(scorecard);
+    // assert
     assert.equal(result, 'Python');
 });
 
-test('Java', function(assert) {
-    const result = rateScorecard({ 
-        js: 0, python: 0, java: 1, csharp: 0
-    });
+test('java highest on scorecard, return Java', function(assert) {
+    // arrange
+    const scorecard = { js: 0, python: 0, java: 1, csharp: 0 };
+    // act
+    const result = rateScorecard(scorecard);
+    // assert
     assert.equal(result, 'Java');
 });
 
-test('C#', function(assert) {
-    const result = rateScorecard({ 
-        js: 0, python: 0, java: 0, csharp: 1
-    });
+test('csharp highest on scorecard, return C#', function(assert) {
+    // arrange
+    const scorecard = { js: 0, python: 0, java: 0, csharp: 1 };
+    // act
+    const result = rateScorecard(scorecard);
+    // assert
     assert.equal(result, 'C#');
 });
 
-test('tie JavaScript wins', function(assert) {
-    const result = rateScorecard({ 
-        js: 1, python: 1, java: 1, csharp: 1
-    });
-    assert.equal(result, 'JavaScript');    
+test('csharp highest even though js beats python, return C#', function(assert) {
+    // arrange
+    const scorecard = { js: 1, python: 0, java: 0, csharp: 4 };
+    // act
+    const result = rateScorecard(scorecard);
+    // assert
+    assert.equal(result, 'C#');
 });
 
-test('tie Python beats C# and Java', function(assert) {
-    const result = rateScorecard({ 
-        js: 0, python: 1, java: 1, csharp: 1
-    });
-    assert.equal(result, 'Python');    
+test('java highest even though js beats python, return Java', function(assert) {
+    // arrange
+    const scorecard = { js: 1, python: 0, java: 4, csharp: 0 };
+    // act
+    const result = rateScorecard(scorecard);
+    // assert
+    assert.equal(result, 'Java');
 });
 
-test('tie C# beats Java', function(assert) {
-    const result = rateScorecard({ 
-        js: 0, python: 0, java: 1, csharp: 1
-    });
-    assert.equal(result, 'C#');    
-});

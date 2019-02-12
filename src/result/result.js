@@ -1,5 +1,3 @@
-import calculateResult from './calculate/calculate-result.js';
-
 const userJSON = window.localStorage.getItem('user');
 let user = null;
 if(userJSON) {
@@ -24,6 +22,8 @@ const avatar = document.getElementById('avatar');
 name.textContent = user.name;
 avatar.src = 'assets/avatars/' + user.avatar;
 
-const resultDisplay = document.getElementById('result');
-const result = calculateResult(answers);
-resultDisplay.textContent = result;
+console.log(answers);
+
+// const resultDisplay = document.getElementById('result');
+// const result = calculateResult(answers);
+// resultDisplay.textContent = result;
