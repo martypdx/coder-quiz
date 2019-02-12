@@ -1,22 +1,5 @@
+import rateScorecard from '../src/result/rate-scorecard.js';
 const test = QUnit.test;
-
-function rateScorecard(scorecard) {
-    const js = scorecard.js;
-    const python = scorecard.python;
-    const java = scorecard.java;
-    const csharp = scorecard.csharp;
-
-    if(js > python && js > csharp && js > java) {
-        return 'JavaScript';
-    }
-    if(python > java) {
-        return 'Python';
-    }
-    if(java > csharp) {
-        return 'Java';
-    }
-    return 'C#';
-}
 
 test('js highest on scorecard, return JavaScript', function(assert) {
     // arrange (given a specific scorecard value)
@@ -73,5 +56,14 @@ test('java highest even though js beats python, return Java', function(assert) {
     const result = rateScorecard(scorecard);
     // assert
     assert.equal(result, 'Java');
+});
+
+test('csharp highest even though python beats javascript, return C#', function(assert) {
+    // arrange
+    const scorecard = { js: 0, python: 1, java: 0, csharp: 4 };
+    // act
+    const result = rateScorecard(scorecard);
+    // assert
+    assert.equal(result, 'C#');
 });
 

@@ -1,3 +1,6 @@
+import scoreVerbosity from './score-verbosity.js';
+import rateScorecard from './rate-scorecard.js';
+
 const userJSON = window.localStorage.getItem('user');
 let user = null;
 if(userJSON) {
@@ -22,8 +25,9 @@ const avatar = document.getElementById('avatar');
 name.textContent = user.name;
 avatar.src = 'assets/avatars/' + user.avatar;
 
-console.log(answers);
+const scorecard = { js: 0, python: 0, java: 0, csharp: 0 };
+scoreVerbosity(answers.verbosity, scorecard);
+const result = rateScorecard(scorecard);
 
-// const resultDisplay = document.getElementById('result');
-// const result = calculateResult(answers);
-// resultDisplay.textContent = result;
+const resultDisplay = document.getElementById('result');
+resultDisplay.textContent = result;
